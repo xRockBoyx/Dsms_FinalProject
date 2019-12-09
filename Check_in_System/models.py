@@ -21,6 +21,7 @@ class Activity(models.Model):
 class ActivityAttendList(models.Model):
     act_date = models.ForeignKey(Activity, models.DO_NOTHING, db_column='act_date')
     act = models.OneToOneField('ClubMember', models.DO_NOTHING, primary_key=True)
+    job = models.CharField(db_column='Job', max_length=10)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -76,6 +77,9 @@ class AuthUser(models.Model):
     is_staff = models.IntegerField()
     is_active = models.IntegerField()
     date_joined = models.DateTimeField()
+    phone = models.CharField(max_length=20, blank=True, null=True)
+    deparement = models.CharField(max_length=50, blank=True, null=True)
+    stu_id = models.CharField(max_length=10, blank=True, null=True)
 
     class Meta:
         managed = False
