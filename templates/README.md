@@ -12,9 +12,9 @@
 
 ## 管理員
 ### 活動管理頁面
-- [ ] 新增活動資料
-- [ ] 編輯活動資料
-- [ ] 刪除活動資料 
+- [x] 新增活動資料 (ActivityAdmin.html)
+- [x] 編輯活動資料 (ActivityAdmin.html)
+- [x] 刪除活動資料 (ActivityAdmin.html)
 
 ### 社員管理頁面
 - [ ] 新增社員資料
