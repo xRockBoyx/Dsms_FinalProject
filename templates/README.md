@@ -5,8 +5,7 @@
 > by 巫逸哲
 
 ## 訪客
-- [x] [瀏覽首頁](./registeration/login.html)
-- ()../templates/index.html）
+- [x] [瀏覽首頁](../templates/index.html)
 - [x] [可瀏覽登入頁面](./registeration/login.html)
 - [x] [可瀏覽註冊頁面](./registeration/Registered.html) 
 
