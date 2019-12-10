@@ -2,8 +2,8 @@
 
 ## 訪客
 - [x] [可瀏覽首頁](./index.html）
-- [x] [可瀏覽登入頁面](login.html)
-- [x] [可瀏覽註冊頁面](?) 
+- [x] [可瀏覽登入頁面](./registeration/login.html)
+- [x] [可瀏覽註冊頁面](./registeration/Registered.html) 
 
 ## 社員
 - [x] [修改個人資料](./User/ChangeInfo.html)
