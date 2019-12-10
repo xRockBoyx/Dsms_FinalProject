@@ -17,9 +17,9 @@
 - [x] 刪除活動資料 (ActivityAdmin.html)
 
 ### 社員管理頁面
-- [x] 新增社員資料
-- [x] 編輯社員資料
-- [x] 刪除社員資料 
+- [x] 新增社員資料 (UserAdmin.html)
+- [x] 編輯社員資料 (UserAdmin.html)
+- [x] 刪除社員資料 (UserAdmin.html)
 
 ### 簽到管理頁面
 - [ ] 新增簽到紀錄
