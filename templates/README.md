@@ -7,8 +7,8 @@
 
 ## 社員
 - [x] 修改個人資料 (ChangeInfo.html)
-- [x] 查詢未來活動 (Activity.html)
-- [x] 檢視已參與活動 (Activity.html)
+- [x] 查詢未來活動 (ActivityUser.html)
+- [x] 檢視已參與活動 (ActivityUser.html)
 
 ## 管理員
 ### 活動管理頁面
