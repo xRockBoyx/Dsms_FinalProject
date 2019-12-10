@@ -2,10 +2,10 @@
 
 # 需完成頁面 (進度：100%) 
 > 已全部完成 
-> @ yitsewu1998
+> by 巫逸哲
 
 ## 訪客
-- [x] [可瀏覽首頁](index.html）
+- [x] [可瀏覽首頁](../templates/index.html）
 - [x] [可瀏覽登入頁面](./registeration/login.html)
 - [x] [可瀏覽註冊頁面](./registeration/Registered.html) 
 
