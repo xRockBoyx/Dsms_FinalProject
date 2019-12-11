@@ -9,12 +9,15 @@ def Index(request):
     print(members[0].email)
     return render(request,'index.html')
 
-def SignUp(request):
+def register(request):
     if request.method == 'POST':
-        form = RegisterForm(request.post)
-        print()
-    else :
-        return render(request,'SignUp.html')
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            print(form.name)
+            newUser = form.save(commit=False)
+            newUser.save()
+        
+    return render(request,'registeration/register.html')
 
     
 

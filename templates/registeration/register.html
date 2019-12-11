@@ -117,18 +117,19 @@
 
         <div class="container">
             <article class="card-body mx-auto" style="max-width: 400px;">
-                <form action='/signup' method="POST">{% csrf_token %}
+                <form action='/register/' method="POST">
+                {% csrf_token %}
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                         </div>
-                        <input name="" class="form-control" placeholder="姓名" type="text">
+                        <input name="name" class="form-control" placeholder="姓名" type="text">
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-building"></i> </span>
                         </div>
-                        <select class="form-control">
+                        <select class="form-control" name="deparement">
                             <option selected=""> IECS </option>
                             <option> RCE </option>
                             <option> DCL </option>
@@ -139,7 +140,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                         </div>
-                        <input name="" class="form-control" placeholder="Email address" type="email">
+                        <input name="email" class="form-control" placeholder="Email address" type="email">
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
@@ -148,20 +149,20 @@
                         <select class="custom-select" style="max-width: 120px;">
                             <option selected="">+886</option>
                         </select>
-                        <input name="" class="form-control" placeholder="Phone number" type="text">
+                        <input name="phone" class="form-control" placeholder="Phone number" type="text">
                     </div>
 
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                         </div>
-                        <input class="form-control" placeholder="Create password" type="password">
+                        <input name="password1" class="form-control" placeholder="Create password" type="password">
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                         </div>
-                        <input class="form-control" placeholder="Repeat password" type="password">
+                        <input name="password2" class="form-control" placeholder="Repeat password" type="password">
                     </div>
                     <div class="form-group">
                         <button class="btn btn-lg btn-primary btn-block" type="submit">註冊</button>
