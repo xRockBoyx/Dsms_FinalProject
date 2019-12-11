@@ -1,7 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import ClubMember,AuthUser
-from django.contrib.auth.models import User
 from .forms import *
 
 def Index(request):
@@ -11,11 +10,13 @@ def Index(request):
 
 def register(request):
     if request.method == 'POST':
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            print(form.name)
-            newUser = form.save(commit=False)
-            newUser.save()
+        data = request.POST
+        new_user = AuthUser.objects.create()
+        print(request.POST)
+        # if form.is_valid():
+        #     print(form)
+            #newUser = form.save(commit=False)
+            #newUser.save()
         
     return render(request,'registeration/register.html')
 
