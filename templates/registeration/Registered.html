@@ -23,11 +23,9 @@
             padding: 15px;
             margin: auto;
         }
-
         .form-signin .checkbox {
             font-weight: 400;
         }
-
         .form-signin .form-control {
             position: relative;
             box-sizing: border-box;
@@ -35,28 +33,23 @@
             padding: 10px;
             font-size: 16px;
         }
-
         .form-signin .form-control:focus {
             z-index: 2;
         }
-
         .form-signin input[type="email"] {
             margin-bottom: -1px;
             border-bottom-right-radius: 0;
             border-bottom-left-radius: 0;
         }
-
         .form-signin input[type="password"] {
             margin-bottom: 10px;
             border-top-left-radius: 0;
             border-top-right-radius: 0;
         }
-
         .bd-placeholder-img {
             font-size: 1.125rem;
             text-anchor: middle;
         }
-
         @media (min-width: 768px) {
             .bd-placeholder-img-lg {
                 font-size: 3.5rem;
@@ -109,7 +102,7 @@
         <div class="form-signin text-center" style="margin-top: 100px">
             <img class="mb-4" src="https://bootstrap.hexschool.com/docs/4.2/assets/brand/bootstrap-solid.svg" alt=""
                 width="72" height="72">
-            <h1 class="h3 mb-3 font-weight-normal"> 修改個人資料 </h1>
+            <h1 class="h3 mb-3 font-weight-normal">社團管理註冊</h1>
         </div>
         <!------ Include the above in your HEAD tag ---------->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
@@ -122,18 +115,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                         </div>
-                        <input name="" class="form-control" placeholder="姓名" type="text">
-                    </div>
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-building"></i> </span>
-                        </div>
-                        <select class="form-control">
-                            <option selected=""> IECS </option>
-                            <option> RCE </option>
-                            <option> DCL </option>
-                            <option> DEE </option>
-                        </select>
+                        <input name="" class="form-control" placeholder="Full name" type="text">
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
@@ -146,11 +128,24 @@
                             <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
                         </div>
                         <select class="custom-select" style="max-width: 120px;">
-                            <option selected="">+886</option>
+                            <option selected="">+971</option>
+                            <option value="1">+972</option>
+                            <option value="2">+198</option>
+                            <option value="3">+701</option>
                         </select>
                         <input name="" class="form-control" placeholder="Phone number" type="text">
                     </div>
-
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+                        </div>
+                        <select class="form-control">
+                            <option selected=""> Select job type</option>
+                            <option>Designer</option>
+                            <option>Manager</option>
+                            <option>Accaunting</option>
+                        </select>
+                    </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
@@ -163,16 +158,10 @@
                         </div>
                         <input class="form-control" placeholder="Repeat password" type="password">
                     </div>
-                    <div class="row">
-                        <div class="col-6 form-group">
-                            <button class="btn btn-lg btn-danger btn-block" type="submit"> 取消修改 </button>
-                        </div>
-                        <div class="col-0"></div>
-                        <div class="col-6 form-group">
-                            <button class="btn btn-lg btn-success btn-block" type="submit"> 確認修改 </button>
-                        </div>
+                    <div class="form-group">
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">註冊</button>
                     </div>
-
+                    <p class="text-center"> 我已經有帳號？ <a href=""> 登入 </a> </p>
                 </form>
             </article>
         </div>
@@ -195,4 +184,5 @@
     </footer>
 </body>
 
-</html>
+</html> 
+0 comments on commit 34b3c72

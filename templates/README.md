@@ -1,27 +1,31 @@
-# 須完成進度
+ 
+
+# 需完成頁面 (進度：100%) 
+> 已全部完成 
+> by 巫逸哲
 
 ## 訪客
-- [x] 可瀏覽首頁 （index.html）
-- [x] 可瀏覽登入頁面 (SignIn.html)
-- [x] 可瀏覽註冊頁面 (SignUp.html)
+- [x] [瀏覽首頁](../templates/index.html)
+- [x] [可瀏覽登入頁面](./registeration/login.html)
+- [x] [可瀏覽註冊頁面](./registeration/Registered.html) 
 
 ## 社員
-- [x] 修改個人資料 (ChangeInfo.html)
-- [x] 查詢未來活動 (ActivityUser.html)
-- [x] 檢視已參與活動 (ActivityUser.html)
+- [x] [修改個人資料](./User/ChangeInfo.html)
+- [x] [查詢未來活動](./User/Activity.html)
+- [x] [檢視參與活動](./User/Activity.html)
 
 ## 管理員
 ### 活動管理頁面
-- [x] 新增活動資料 (ActivityAdmin.html)
-- [x] 編輯活動資料 (ActivityAdmin.html)
-- [x] 刪除活動資料 (ActivityAdmin.html)
+- [x] [新增活動資料](./Admin/Activity.html)
+- [x] [編輯活動資料](./Admin/Activity.html)
+- [x] [刪除活動資料](./Admin/Activity.html)
 
 ### 社員管理頁面
-- [ ] 新增社員資料
-- [ ] 編輯社員資料
-- [ ] 刪除社員資料 
+- [x] [新增社員資料](./Admin/UserEdit.html)
+- [x] [編輯社員資料](./Admin/UserEdit.html)
+- [x] [刪除社員資料](./Admin/UserEdit.html)
 
 ### 簽到管理頁面
-- [ ] 新增簽到紀錄
-- [ ] 編輯簽到紀錄
-- [ ] 刪除簽到紀錄
+- [x] [新增簽到紀錄](./Admin/CheckIn.html)
+- [x] [編輯簽到紀錄](./Admin/CheckIn.html)
+- [x] [刪除簽到紀錄](./Admin/CheckIn.html)
