@@ -54,18 +54,6 @@ class RegisterForm(UserCreationForm):
             }
         )
     )
-    # name = forms.TextInput(
-    #     max_length=100,
-    #     widget=forms.TextInput(
-    #         attrs={
-    #             'placeholder':'姓名',
-    #             'class':'form-control'
-    #         }
-    #     )
-    # )
-    #name = forms.CharField(max_length=100)
-    
-    #stu_id = forms.CharField(max_length=10)
     class Meta:
         model = User
         fields = ("deparement", "name","phone","email", "password1", "password2")
