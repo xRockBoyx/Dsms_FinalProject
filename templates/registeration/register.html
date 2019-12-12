@@ -118,32 +118,45 @@
         <div class="container">
             <article class="card-body mx-auto" style="max-width: 400px;">
                 <form action='/register/' method="POST">
+                {{ form.non_field_errors }}
                 {% csrf_token %}
+                {% comment %} {{form}} {% endcomment %}
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                         </div>
-                        
-                        <input name="name" class="form-control" placeholder="姓名" type="text">
+                        {{form.name}}
+                        {{form.name.errors}}
+                        {% comment %} <input name="name" class="form-control" placeholder="姓名" type="text"> {% endcomment %}
                         
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-building"></i> </span>
                         </div>
-                        <select class="form-control" name="deparement">
+                        {{form.deparement}}
+                        {{form.deparement.errors}}
+                        {% comment %} <select class="form-control">
                             <option selected=""> IECS </option>
                             <option> RCE </option>
                             <option> DCL </option>
                             <option> DEE </option>
-                        </select>
+                        </select> {% endcomment %}
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                         </div>
-                        <input name="email" class="form-control" placeholder="Email address" type="email">
+                        {{form.email}}
+                       
+                        
+                        
+                        
+                        {% comment %} <input name="email" class="form-control" placeholder="Email address" type="email"> {% endcomment %}
                     </div>
+                        {% if form.email.errors  %}
+                            {{form.email.errors}}
+                        {% endif %}
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
@@ -151,26 +164,32 @@
                         <select class="custom-select" style="max-width: 120px;">
                             <option selected="">+886</option>
                         </select>
-                        <input name="phone" class="form-control" placeholder="Phone number" type="text">
+                        {{form.phone}}
+                        {{form.phone.errors}}
+                        {% comment %} <input name="phone" class="form-control" placeholder="Phone number" type="text"> {% endcomment %}
                     </div>
 
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                         </div>
-                        <input name="password" class="form-control" placeholder="Create password" type="password">
+                        {{form.password1}}
+                        {{form.password1.errors}}
+                        {% comment %} <input name="password" class="form-control" placeholder="Create password" type="password"> {% endcomment %}
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                         </div>
-                        <input class="form-control" placeholder="Repeat password" type="password">
+                        {{form.password2}}
+                        {{form.password2.errors}}
+                        {% comment %} <input class="form-control" placeholder="Repeat password" type="password"> {% endcomment %}
                     </div>
                     <div class="form-group">
                         <button class="btn btn-lg btn-primary btn-block" type="submit">註冊</button>
                     </div>
                     <p class="text-center"> 我已經有帳號？ <a href=""> 登入 </a> </p>
-                </form>
+                {% comment %} </form> {% endcomment %}
             </article>
         </div>
     </main>

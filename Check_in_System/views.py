@@ -9,16 +9,19 @@ def Index(request):
     return render(request,'index.html')
 
 def register(request):
+    form = RegisterForm(request.POST or None)
     if request.method == 'POST':
-        data = request.POST
-        new_user = AuthUser.objects.create()
-        print(request.POST)
-        # if form.is_valid():
-        #     print(form)
-            #newUser = form.save(commit=False)
-            #newUser.save()
+        #AuthUser.objects.create(username=data['name'],deparement=data['deparement'],email=data['email'],phone=['phone'],password=['password'],is_superuser=0,is_staff=1,is_active=1)
+        # print(form)
+        if form.is_valid():
+        #    print(form)
+        #    newUser = form.save(commit=False)
+             form.save()
+             redirect('index.html')
+        else:
+            print(form.errors)
         
-    return render(request,'registeration/register.html')
+    return render(request,'registeration/register.html',{'form':form})
 
     
 
