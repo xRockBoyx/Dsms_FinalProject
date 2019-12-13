@@ -53,7 +53,10 @@
                             </div>
                         </li>
                     </ul>
-                    <button class="btn btn-outline-success my-2 my-sm-0">登入</button>
+                    {% if  %}
+                        <a class="my-sm-0" href="{% url 'login' %}">登入</a>
+                    {% endif %}
+                    
                 </div>
             </div>
         </nav>

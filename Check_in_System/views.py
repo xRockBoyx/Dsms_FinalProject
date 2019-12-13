@@ -20,7 +20,7 @@ def register(request):
         #    newUser = form.save(commit=False)
             form.save()
             messages.success(request,"註冊成功！！！")
-            return redirect('index.html')
+            return redirect('/')
         
     return render(request,'registration/register.html',{'form':form})
 # def login(request):

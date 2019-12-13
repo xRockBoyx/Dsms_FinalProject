@@ -3,6 +3,16 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 class RegisterForm(UserCreationForm):
+    #因為django預設是用username欄位登入，所以我直接把學號塞入username欄位當作帳號
+    username = forms.CharField(
+        max_length=10,
+        widget=forms.TextInput(
+            attrs={
+                'placeholder':'學號',
+                'class':'form-control'
+            }
+        )
+    )
     deparement = forms.CharField(
         max_length=20,
         widget=forms.Select(
@@ -56,14 +66,13 @@ class RegisterForm(UserCreationForm):
     )
     class Meta:
         model = User
-        fields = ("deparement", "name","phone","email", "password1", "password2")
+        fields = ("username","deparement", "name","phone","email", "password1", "password2")
 
     def save(self, commit=True):
         user = super(RegisterForm, self).save(commit=False)
         user.deparement = self.cleaned_data["deparement"]
         user.name = self.cleaned_data["name"]
         user.phone = self.cleaned_data["phone"]
-       # user.stu_id = self.cleaned_data["stu_id"]
         if commit:
             user.save()
         return user
