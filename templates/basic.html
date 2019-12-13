@@ -53,9 +53,12 @@
                             </div>
                         </li>
                     </ul>
-                    {% if  %}
+                    {% if not user.is_authenticated %}
                         <a class="my-sm-0" href="{% url 'login' %}">登入</a>
+                    {% else %}
+                        <a class="my-sm-0" href="{% url 'logout' %}?next=/">登出</a>
                     {% endif %}
+
                     
                 </div>
             </div>
