@@ -30,6 +30,7 @@ def register(request):
             return redirect('/')
         
     return render(request,'registration/register.html',{'form':form})
+
 def activity(request):
     activities = Activity.objects.all()
     #print(activities)
@@ -78,4 +79,27 @@ def activityDelete(request,name):
 #     return render(request,'registration/login.html')
             
 
+def Changeinfo(request):
+    #for e in AuthUser.objects.all():
+        #print(e.username)
+    #print(request.user)
+    #form = AuthUser.objects.filter(username=request.user.username)
+    
+    
+    for e in AuthUser.objects.all():
+        #print(e.username,request.user)
+        if e.username == request.user.username:
+            form = e
+            break
+    print(form.phone)
+    #print(form.username)
+
+    if request.method == 'POST':
+        print(request.user.username)
+        print(request.POST)
+        messages.success(request,"更改成功！！！")
+        AuthUser.objects.filter(username = request.user.username).update(email = request.POST['email'], phone = request.POST['phone'], deparement=request.POST['deparement'])
+        return redirect('/')
+    
+    return render(request,'User/Changeinfo.html',{'form':form})
 # Create your views here.
