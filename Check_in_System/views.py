@@ -18,7 +18,6 @@ def Index(request):
     return render(request,'index.html')
 
 def register(request):
-    print(1231234)
     form = RegisterForm(request.POST or None)
     if request.method == 'POST':
         #AuthUser.objects.create(username=data['name'],deparement=data['deparement'],email=data['email'],phone=['phone'],password=['password'],is_superuser=0,is_staff=1,is_active=1)
@@ -58,8 +57,13 @@ def activityEdit(request):
         print(request.POST['name'])
         print(current)
         print(Activity.objects.filter(act_name = current))
-        Activity.objects.filter(act_name = current).update(act_name=request.POST['name'],location=request.POST['location'])
+        Activity.objects.filter(act_name = current).update(act_name=request.POST['name'],location=request.POST['location'],act_date=request.POST['date'])
         return redirect('/activity/')
+
+def activityDelete(request,name):
+    temp = Activity.objects.filter(act_name = name)
+    # temp.delete()
+    return redirect('/activity/')
 
 # def login(request):
 #     if request.method == 'POST':
