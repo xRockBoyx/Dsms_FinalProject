@@ -53,9 +53,8 @@
                 <div class="col-6"></div>
                 <div class="col-3">
                     <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-                        <button type="button" class="btn btn-secondary">新增活動</button>
-                        <button type="button" class="btn btn-secondary">編輯活動</button>
-                        <button type="button" class="btn btn-secondary">刪除活動</button>
+                        <a target="_blank" href="{% url 'AddActivity'%}"><button type="button" class="btn btn-secondary">新增活動</button></a>
+                        
                     </div>
                 </div>
             </div>
@@ -63,63 +62,9 @@
             <div class="row">
                 <div class="col-5">
                     <div class="my-3 p-3 bg-white rounded shadow-sm">
-                        <h5> 未來活動 </h5>
-                        <div class="media text-muted pt-3">
-                            <svg height="32" width="32" class="bd-placeholder-img mr-2 rounded"
-                                enable-background="new 0 0 482.239 482.239" height="512" viewBox="0 0 482.239 482.239"
-                                width="512" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="m465.016 0h-447.793c-9.52 0-17.223 7.703-17.223 17.223v447.793c0 9.52 7.703 17.223 17.223 17.223h447.793c9.52 0 17.223-7.703 17.223-17.223v-447.793c0-9.52-7.703-17.223-17.223-17.223zm-17.223 447.793h-413.347v-413.347h413.348v413.347z" />
-                            </svg>
-                            <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                                <div class="d-flex justify-content-between align-items-center w-100">
-                                    <strong class="text-gray-dark">我們與資安的距離</strong>
-                                    <a href="#">edit</a>
-                                </div>
-                                <span class="d-block">2019-10-05</span>
-                            </div>
-                        </div>
-
-                        <div class="media text-muted pt-3">
-                            <svg height="32" width="32" class="bd-placeholder-img mr-2 rounded"
-                                enable-background="new 0 0 482.239 482.239" height="512" viewBox="0 0 482.239 482.239"
-                                width="512" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="m465.016 0h-447.793c-9.52 0-17.223 7.703-17.223 17.223v447.793c0 9.52 7.703 17.223 17.223 17.223h447.793c9.52 0 17.223-7.703 17.223-17.223v-447.793c0-9.52-7.703-17.223-17.223-17.223zm-17.223 447.793h-413.347v-413.347h413.348v413.347z" />
-                            </svg>
-                            <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                                <div class="d-flex justify-content-between align-items-center w-100">
-                                    <strong class="text-gray-dark">我們與資安的距離</strong>
-                                    <a href="#">edit</a>
-                                </div>
-                                <span class="d-block">2019-10-05</span>
-                            </div>
-                        </div>
-
-                        <div class="media text-muted pt-3">
-                            <svg height="32" width="32" class="bd-placeholder-img mr-2 rounded"
-                                enable-background="new 0 0 482.239 482.239" height="512" viewBox="0 0 482.239 482.239"
-                                width="512" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="m465.016 0h-447.793c-9.52 0-17.223 7.703-17.223 17.223v447.793c0 9.52 7.703 17.223 17.223 17.223h447.793c9.52 0 17.223-7.703 17.223-17.223v-447.793c0-9.52-7.703-17.223-17.223-17.223zm-17.223 447.793h-413.347v-413.347h413.348v413.347z" />
-                            </svg>
-                            <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                                <div class="d-flex justify-content-between align-items-center w-100">
-                                    <strong class="text-gray-dark">我們與資安的距離</strong>
-                                    <a href="#">edit</a>
-                                </div>
-                                <span class="d-block">2019-10-05</span>
-                            </div>
-                        </div>
-
-                        <small class="d-block text-right mt-3">
-                            <a href="#"> 檢視所有活動 </a>
-                        </small>
-                    </div>
-                    <div class="my-3 p-3 bg-white rounded shadow-sm">
                         <h5> 所有活動 </h5>
                         {% for  i in  activities %}
-                            <div class="media text-muted pt-3">
+                        <div class="media text-muted pt-3">
                             <svg height="32" width="32" class="bd-placeholder-img mr-2 rounded"
                                 enable-background="new 0 0 482.239 482.239" viewBox="0 0 482.239 482.239" width="512"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -131,58 +76,20 @@
                             <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
                                 <div class="d-flex justify-content-between align-items-center w-100">
                                     <strong class="text-gray-dark">{{i.act_name}}</strong>
-                                    <a class="btn activitie" onclick="del('{{i.act_name}}')">delete</a>
-                                    <a class="btn activitie" onclick="show('{{i.act_name}}')">edit</a>
+                                    
+                                    <a style='color:red' class="btn activitie" onclick="del('{{i.act_name}}')">delete</a>
+                                    <a style='color:blue' class="btn activitie" onclick="show('{{i.act_name}}')">edit</a>
                                 </div>
                                 <span class="d-block">{{i.act_date}}</span>
                             </div>
                         </div>
                         {% endfor %}
-                        
                         <small class="d-block text-right mt-3">
                             <a href="#"> 檢視所有活動 </a>
                         </small>
                     </div>
-
-
                 </div>
                 <div class="col-7">
-
-                    <div class="my-3 p-3 bg-white rounded shadow-sm">
-                        <form>
-                            <h5>活動管理</h5>
-                            <div class="input-group input-group-sm mb-3" style="margin-top: 20px;">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-sm">搜尋</span>
-                                </div>
-                                <input type="text" class="form-control" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-sm" placeholder="輸入日期或活動名稱">
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary" type="button"
-                                        id="button-addon2">Go</button>
-                                </div>
-                            </div>
-                        </form>
-                        <div class="media text-muted pt-3">
-                            <svg height="32" width="32" class="bd-placeholder-img mr-2 rounded"
-                                enable-background="new 0 0 482.239 482.239" viewBox="0 0 482.239 482.239" width="512"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="m465.016 0h-447.793c-9.52 0-17.223 7.703-17.223 17.223v447.793c0 9.52 7.703 17.223 17.223 17.223h447.793c9.52 0 17.223-7.703 17.223-17.223v-447.793c0-9.52-7.703-17.223-17.223-17.223zm-17.223 447.793h-413.347v-413.347h413.348v413.347z" />
-                                <path
-                                    d="m373.856 184.405-24.354-24.354-142.828 142.828-73.937-73.937-24.354 24.354 98.291 98.291z" />
-                            </svg>
-                            <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                                <div class="d-flex justify-content-between align-items-center w-100">
-                                    <strong class="text-gray-dark">我們與資安的距離</strong>
-                                    <a href="#">edit</a>
-                                </div>
-                                <span class="d-block">2019-10-05</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!------ Include the above in your HEAD tag ---------->
                     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
                     <div class="my-3 p-3 bg-white rounded shadow-sm">
                         <form action="{% url 'activityEdit'%}" method="POST">

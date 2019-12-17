@@ -9,5 +9,6 @@ urlpatterns = [
     path('activity/',views.activity,name='activity'),
     path('activity/show/<name>/',views.activityShow,name="activityShow"),
     path('activity/edit/',views.activityEdit,name="activityEdit"),
-    path('activity/delete/<name>/',views.activityDelete,name="activityDelete")
+    path('activity/delete/<name>/',views.activityDelete,name="activityDelete"),
+    path('addactivity/',views.AddActivity,name="AddActivity")
 ]
