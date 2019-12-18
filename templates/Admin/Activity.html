@@ -24,27 +24,14 @@
                 
             })
         };
-        function edit(){
-            var editurl = '/activity/edit/';
-            name = document.getElementById("name").value;
-            location = document.getElementById("location").value;
-            date = document.getElementById("date").value;
-            /*axios({
-                method: 'post',
-                url: editurl,
-                data: qs.stringify ({
-                    'Editname': name,
-                    'Editlocation': location,
-                    'Editdate': date
-                })
-            });
-            */
-            axios.post(editurl, qs.stringify({
-                'Editname': name,
-                'Editlocation': location,
-                'Editdate': date
-            }))
-        };
+        function del(name){ 
+            var url = '/activity/delete/' + name;
+            axios.get(url)
+            .then(function (response) {
+                location.reload()  
+            })
+        }; 
+        
     </script>
 {% endblock %}
 <body> 
@@ -144,6 +131,7 @@
                             <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
                                 <div class="d-flex justify-content-between align-items-center w-100">
                                     <strong class="text-gray-dark">{{i.act_name}}</strong>
+                                    <a class="btn activitie" onclick="del('{{i.act_name}}')">delete</a>
                                     <a class="btn activitie" onclick="show('{{i.act_name}}')">edit</a>
                                 </div>
                                 <span class="d-block">{{i.act_date}}</span>
@@ -223,9 +211,9 @@
                             </div>
 
                             <div class="row" style="margin-top: 50px;">
-                                {% comment %} <div class="col-6 form-group">
-                                    <button class="btn btn-lg btn-danger btn-block" type="submit"> 取消修改 </button>
-                                </div> {% endcomment %}
+                                <div class="col-6 form-group">
+                                    {% comment %} <a href="{% url 'activityDelete'%}"><button class="btn btn-lg btn-danger btn-block" type="button"> 刪除活動 </button></a> {% endcomment %}
+                                </div> 
                                 <div class="col-0"></div>
                                 <div class="col-6 form-group">
                                     <button onclick="edit()" class="btn btn-lg btn-success btn-block"> 確認修改 </button>

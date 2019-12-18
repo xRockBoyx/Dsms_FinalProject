@@ -8,5 +8,6 @@ urlpatterns = [
     path('Changeinfo/',views.Changeinfo,name='Changeinfo'),
     path('activity/',views.activity,name='activity'),
     path('activity/show/<name>/',views.activityShow,name="activityShow"),
-    path('activity/edit/',views.activityEdit,name="activityEdit")
+    path('activity/edit/',views.activityEdit,name="activityEdit"),
+    path('activity/delete/<name>/',views.activityDelete,name="activityDelete")
 ]

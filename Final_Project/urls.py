@@ -21,5 +21,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('Check_in_System.urls')),
     path('', include('django.contrib.auth.urls'))
-    #path('logout',views.LoginView.as_view(template_name='myapp/login.html'))
 ]
