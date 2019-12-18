@@ -1,0 +1,51 @@
+{% extends "../basic.html" %}
+{% block content%}
+    {% if messages%}
+        {% for message in messages %}
+        <p {% if message.tags == "success" %} class="alert alert-success" {% elif message.tags == 'error'%} class="alert alert-danger" {% endif %}>{{message}}</p>
+        {% endfor %}
+    {% endif %}
+    <form action="{% url 'AddActivity'%}" method="POST">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <h5> 新增活動 </h5>
+        {% comment %} <h6 id="act_name" style="margin-top: 30px;"> 當前名稱： 我們與資安的距離 </h6> {% endcomment %}
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+            </div>
+            {{form.name}}
+            {{form.name.errors}}
+            {% comment %} <input name="name" class="form-control" placeholder="活動名稱" type="text"> {% endcomment %}
+        </div>
+        {% comment %} <h6 id="act_location" style="margin-top: 30px;"> 當前地點： 逢甲大學 </h6> {% endcomment %}
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+            </div>
+            {{form.location}}
+            {{form.location.errors}}
+            {% comment %} <input name="location" class="form-control" placeholder="活動地點" type="text"> {% endcomment %}
+        </div>
+        {% comment %} <h6 id="act_date" style="margin-top: 30px;"> 當前日期： 2019-10-05 </h6> {% endcomment %}
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+            {{form.date}}
+            {{form.date.errors}}
+            {% comment %} <input name="date" class="form-control" placeholder="活動日期(yyyy-mm-dd)" type="text"> {% endcomment %}
+        </div>
+
+        <div class="row" style="margin-top: 50px;">
+            <div class="col-6 form-group">
+                {% comment %} <a href="{% url 'activityDelete'%}"><button class="btn btn-lg btn-danger btn-block" type="button"> 刪除活動 </button></a> {% endcomment %}
+            </div> 
+            <div class="col-0"></div>
+            <div class="col-6 form-group">
+                <button class="btn btn-lg btn-success btn-block" type="submit"> 確認新增 </button>
+            </div>
+        </div>
+
+    </form>
+{% endblock %}

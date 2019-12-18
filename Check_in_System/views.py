@@ -102,4 +102,15 @@ def Changeinfo(request):
         return redirect('/')
     
     return render(request,'User/Changeinfo.html',{'form':form})
+
+def AddActivity(request):
+    form = AddActivityForm(request.POST)
+    if request.method == 'POST':
+        if form.is_valid():
+            name = form.cleaned_data.get('name')
+            location = form.cleaned_data.get('location')
+            messages.success(request,'新增成功！')
+        else:
+            messages.error(request,'新增失敗！')
+    return render(request,'Admin/AddActivity.html',{'form':form})
 # Create your views here.

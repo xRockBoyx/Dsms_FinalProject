@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import Activity
 
 class RegisterForm(UserCreationForm):
     #因為django預設是用username欄位登入，所以我直接把學號塞入username欄位當作帳號
@@ -76,6 +77,33 @@ class RegisterForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+class AddActivityForm(forms.Form):
+    name = forms.CharField(max_length=50, required=True,
+        widget=forms.TextInput(
+            attrs={
+                "class":"form-control",
+                'placeholder':"活動名稱"
+            }
+        )
+    )
+    location = forms.CharField(max_length=50,required=True,
+        widget = forms.TextInput(
+            attrs={
+                "class":"form-control",
+                'placeholder':"活動地點"
+            }
+        )
+    )
+    date = forms.DateField(required=True,
+        widget = forms.DateInput(
+            attrs={
+                "class":"form-control",
+                'placeholder':"活動日期(yyyy-mm-dd)"
+            }
+        )
+    )
     
+
     
     
