@@ -22,6 +22,7 @@ class ActivityAttendList(models.Model):
     act_date = models.ForeignKey(Activity, models.DO_NOTHING, db_column='act_date')
     act = models.OneToOneField('ClubMember', models.DO_NOTHING, primary_key=True)
     job = models.CharField(db_column='Job', max_length=10)  # Field name made lowercase.
+    flag = models.IntegerField(blank=True, null=True)
 
     class Meta:
         managed = False

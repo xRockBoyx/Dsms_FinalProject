@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from .models import ClubMember,AuthUser,Activity
+from .models import ClubMember,AuthUser,Activity,ActivityAttendList
 from .forms import *
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
@@ -63,7 +63,7 @@ def activityEdit(request):
 
 def activityDelete(request,name):
     temp = Activity.objects.filter(act_name = name)
-    # temp.delete()
+    temp.delete()
     return redirect('/activity/')
 
 # def login(request):
@@ -113,4 +113,27 @@ def AddActivity(request):
         else:
             messages.error(request,'新增失敗！')
     return render(request,'Admin/AddActivity.html',{'form':form})
+
+def CheckIn(request):
+    attendList = ActivityAttendList.objects.all()
+    activities = Activity.objects.all()
+    
+    
+    return render(request,'Admin/CheckIn.html',{'activities':activities})
+
+def CheckInObjects(request,name):
+    attendList = ActivityAttendList.objects.all()
+    activities = Activity.objects.all()
+    clubmember = ClubMember.objects.all()
+
+    datetemp =  activities.filter(act_name=name)[0].act_date
+    passdata = attendList.filter(act_date=datetemp)
+
+    
+    if request.method == 'POST':
+        name = request.POST['name']
+        date = request.POST['date']
+        attendList.filter(date)
+    
+    return render(request,'Admin/CheckInAction.html',{'activities':activities,'attendlist':passdata,'clubmember':clubmember,'name':name})
 # Create your views here.

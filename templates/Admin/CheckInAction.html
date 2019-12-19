@@ -1,24 +1,22 @@
 {% extends '../basic.html' %}
-
-{% block  Ajax %}
-
-<script>
-    var current = ""
-    function show(name,date){
-        console.log(name);
-        current = name;
-        document.getElementById("title").innerText = name+" 活動簽到";
+{% block Ajax %}
+    <script>
+    function checkinButton(id,name){
+        url = '/checkin' + name + '/'
+        axios.post(url, {
+            id: id,
+            name: name
+        })
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
     }
-
-</script>
-
-
-
-{% endblock  %}
-
-
+    </script>
+{% endblock%}
 {% block content %}
-    
     <main>
         <div class="container">
 
@@ -64,7 +62,7 @@
                             <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
                                 <div class="d-flex justify-content-between align-items-center w-100">
                                     <strong class="text-gray-dark">{{i.act_name}}</strong>
-                                    <a class="btn" href="/checkin/{{i.act_name}}")>edit</a>
+                                    <a class="btn" href="/checkin/{{i.act_name}}">edit</a>
                                 </div>
                                 <span class="d-block">{{i.act_date}}</span>
                             </div>
@@ -78,7 +76,7 @@
                 </div>
                 <div class="col-6">
                     <div class="my-3 p-3 bg-white rounded shadow-sm">
-                        <h5 id="title">請在左方選擇活動</h5>
+                        <h5 id="title">{{ name }} 簽到</h5>
                         
                         <div class="input-group input-group-sm mb-3" style="margin-top: 20px;">
                             <div class="input-group-prepend">
@@ -90,7 +88,27 @@
                                 <button class="btn btn-outline-secondary" type="button" id="button-addon2">Go</button>
                             </div>
                         </div>
-
+                       {% for o in attendlist %}
+                            {% for u in clubmember %}
+                                {% if u.stu_id == o.act_id %}
+                                <div class="media text-muted pt-3">
+                                    <svg height="55" width="32" class="bd-placeholder-img mr-2 rounded"
+                                        enable-background="new 0 0 482.239 482.239" height="512" viewBox="0 0 482.239 482.239"
+                                        width="512" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="m465.016 0h-447.793c-9.52 0-17.223 7.703-17.223 17.223v447.793c0 9.52 7.703 17.223 17.223 17.223h447.793c9.52 0 17.223-7.703 17.223-17.223v-447.793c0-9.52-7.703-17.223-17.223-17.223zm-17.223 447.793h-413.347v-413.347h413.348v413.347z" />
+                                    </svg>
+                                    <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                                        <div class="d-flex justify-content-between align-items-center w-100">
+                                            <strong class="text-gray-dark">{{u.name}}</strong>
+                                            <button type="button" class="btn btn-sm btn-success" onclick="checkinButton({{o.act_id}},{{u.name}})"> 簽到 </button>
+                                        </div>
+                                        <span class="d-block">{{o.act_id}}</span>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endfor %} 
                         <small class="d-block text-right mt-3">
                             <a href="#"> 檢視所有社員 </a>
                         </small>

@@ -16,9 +16,9 @@
 
 ## 管理員
 ### 活動管理頁面
-- [x] [新增活動資料](./Admin/Activity.html)
-- [x] [編輯活動資料](./Admin/Activity.html)
-- [x] [刪除活動資料](./Admin/Activity.html)
+- [o] [新增活動資料](./Admin/Activity.html)
+- [o] [編輯活動資料](./Admin/Activity.html)
+- [o] [刪除活動資料](./Admin/Activity.html)
 
 ### 社員管理頁面
 - [x] [新增社員資料](./Admin/UserEdit.html)
