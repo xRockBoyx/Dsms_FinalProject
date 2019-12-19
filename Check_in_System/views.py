@@ -4,6 +4,7 @@ from .models import ClubMember,AuthUser,Activity,ActivityAttendList
 from .forms import *
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 #回傳Json格式資料使用
 from django.http import JsonResponse
 #ajax跳過csrf驗證
@@ -13,8 +14,14 @@ from django.views.decorators.csrf import csrf_exempt,csrf_protect
 current = '' 
 
 def Index(request):
-    members = AuthUser.objects.all()
-    print(members)
+    superusers = User.objects.all()
+    #print(superusers)
+    for i in superusers:
+        print("user",i)
+
+    #print(members)
+   # for i in members:
+      #  print(i.user_permissions)
     return render(request,'index.html')
 
 def register(request):
@@ -32,10 +39,16 @@ def register(request):
     return render(request,'registration/register.html',{'form':form})
 
 def activity(request):
-    activities = Activity.objects.all()
-    #print(activities)
-    return render(request,'Admin/Activity.html',{'activities':activities})
+    superusers = User.objects.filter(is_superuser=True)
+    if  request.user in superusers:
+        activities = Activity.objects.all()
+        #print(activities)
+        return render(request,'Admin/Activity.html',{'activities':activities})
+    else:
 
+        return render(request,'User/Activity.html')
+
+@login_required
 def activityShow(request,name):
     global current
     current = name
@@ -53,6 +66,8 @@ def activityShow(request,name):
     
     return JsonResponse({'showdata':resp})
 
+
+@login_required
 def activityEdit(request):
     if request.method == 'POST':
         print(request.POST['name'])
@@ -61,6 +76,8 @@ def activityEdit(request):
         Activity.objects.filter(act_name = current).update(act_name=request.POST['name'],location=request.POST['location'],act_date=request.POST['date'])
         return redirect('/activity/')
 
+
+@login_required
 def activityDelete(request,name):
     temp = Activity.objects.filter(act_name = name)
     temp.delete()
@@ -79,12 +96,9 @@ def activityDelete(request,name):
 #     return render(request,'registration/login.html')
             
 
+
+@login_required
 def Changeinfo(request):
-    #for e in AuthUser.objects.all():
-        #print(e.username)
-    #print(request.user)
-    #form = AuthUser.objects.filter(username=request.user.username)
-    
     
     for e in AuthUser.objects.all():
         #print(e.username,request.user)
@@ -103,6 +117,8 @@ def Changeinfo(request):
     
     return render(request,'User/Changeinfo.html',{'form':form})
 
+
+@login_required
 def AddActivity(request):
     form = AddActivityForm(request.POST)
     if request.method == 'POST':
