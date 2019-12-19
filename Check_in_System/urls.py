@@ -11,6 +11,6 @@ urlpatterns = [
     path('activity/edit/',views.activityEdit,name="activityEdit"),
     path('activity/delete/<name>/',views.activityDelete,name="activityDelete"),
     path('addactivity/',views.AddActivity,name="AddActivity"),
-    path('checkin/<name>',views.CheckInObjects,name = "CheckInObjects"),
+    path('checkin/<name>/',views.CheckInObjects,name = "CheckInObjects"),
     path('checkin/',views.CheckIn,name = "CheckIn")
 ]

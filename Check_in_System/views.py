@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 #ajax跳過csrf驗證
 from django.views.decorators.csrf import csrf_exempt,csrf_protect
+import json
 
 
 current = '' 
@@ -137,19 +138,31 @@ def CheckIn(request):
     
     return render(request,'Admin/CheckIn.html',{'activities':activities})
 
+
+@csrf_exempt
 def CheckInObjects(request,name):
     attendList = ActivityAttendList.objects.all()
     activities = Activity.objects.all()
     clubmember = ClubMember.objects.all()
 
     datetemp =  activities.filter(act_name=name)[0].act_date
+    print(datetemp)
     passdata = attendList.filter(act_date=datetemp)
 
-    
+
     if request.method == 'POST':
-        name = request.POST['name']
-        date = request.POST['date']
-        attendList.filter(date)
+        data = json.loads(request.body)
+        id = data["id"]
+        actname = data["name"]
+        # name = request.POST.get('name')
+        # id = request.POST.get('id')
+        temp1 = activities.filter(act_name=actname)
+        temp = attendList.filter(act_id=id,act_date=temp1.first().act_date)
+        print(temp)
+        if temp.first().flag == 0:
+            temp.update(flag=1)
+        else:
+            temp.update(flag=0)
     
     return render(request,'Admin/CheckInAction.html',{'activities':activities,'attendlist':passdata,'clubmember':clubmember,'name':name})
 # Create your views here.

@@ -1,18 +1,15 @@
 {% extends '../basic.html' %}
 {% block Ajax %}
     <script>
-    function checkinButton(id,name){
-        url = '/checkin' + name + '/'
+    function checkinButton(id_){
+        url = '/checkin/' + '{{ name }}' + '/'
         axios.post(url, {
-            id: id,
-            name: name
+            id:id_,
+            name: '{{ name }}'
         })
         .then(function (response) {
-            console.log(response);
+            location.reload()
         })
-        .catch(function (error) {
-            console.log(error);
-        });
     }
     </script>
 {% endblock%}
@@ -101,7 +98,11 @@
                                     <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
                                         <div class="d-flex justify-content-between align-items-center w-100">
                                             <strong class="text-gray-dark">{{u.name}}</strong>
-                                            <button type="button" class="btn btn-sm btn-success" onclick="checkinButton({{o.act_id}},{{u.name}})"> 簽到 </button>
+                                            {% if o.flag == 0 %}
+                                            <button type="button" class="btn btn-sm btn-success" onClick="checkinButton('{{o.act_id}}')"> 簽到 </button>
+                                            {% else %}
+                                            <button type="button" class="btn btn-sm btn-danger" onClick="checkinButton('{{o.act_id}}')"> 取消簽到 </button>
+                                            {% endif %}
                                         </div>
                                         <span class="d-block">{{o.act_id}}</span>
                                     </div>
