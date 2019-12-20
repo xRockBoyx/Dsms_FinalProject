@@ -36,19 +36,25 @@
 
                 <div class="collapse navbar-collapse" id="navbarsExample07">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                        {% if user.is_superuser %}
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{% url 'CheckIn' %}">簽到頁面 <span class="sr-only">(current)</span></a>
                         </li>
+                        {% endif %}
+                        {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'index' %}">Link</a>
+                            <a class="nav-link" href="{% url 'Changeinfo' %}">修改個人資料</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Disabled</a>
-                        </li>
+                        {% endif %}
                         <li class="nav-item dropdown">
                             <a class="nav-link " href="{% url 'activity' %}" id="dropdown07" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false"> 活動 </a>
                         </li>
+                        {% if user.is_superuser %}
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{% url 'MemberManagement' %}">社員管理 <span class="sr-only">(current)</span></a>
+                        </li>
+                        {% endif %}
                     </ul>
                     {% if not user.is_authenticated %}
                         <a class="my-sm-0" href="{% url 'login' %}">登入</a>

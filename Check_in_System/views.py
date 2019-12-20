@@ -9,15 +9,16 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 #ajax跳過csrf驗證
 from django.views.decorators.csrf import csrf_exempt,csrf_protect
+import json
 
 
 current = '' 
 
 def Index(request):
-    superusers = User.objects.all()
+    #superusers = User.objects.all()
     #print(superusers)
-    for i in superusers:
-        print("user",i)
+    #for i in superusers:
+    #    print("user",i)
 
     #print(members)
    # for i in members:
@@ -35,6 +36,8 @@ def register(request):
             form.save()
             messages.success(request,"註冊成功！！！")
             return redirect('/')
+        else:
+            messages.error(request,"註冊失敗！！！")
         
     return render(request,'registration/register.html',{'form':form})
 
@@ -45,7 +48,6 @@ def activity(request):
         #print(activities)
         return render(request,'Admin/Activity.html',{'activities':activities})
     else:
-
         return render(request,'User/Activity.html')
 
 @login_required
@@ -80,7 +82,7 @@ def activityEdit(request):
 @login_required
 def activityDelete(request,name):
     temp = Activity.objects.filter(act_name = name)
-    # temp.delete()
+    temp.delete()
     return redirect('/activity/')
 
 # def login(request):
@@ -129,17 +131,42 @@ def AddActivity(request):
         else:
             messages.error(request,'新增失敗！')
     return render(request,'Admin/AddActivity.html',{'form':form})
-# Create your views here.
+
+def CheckIn(request):
+    attendList = ActivityAttendList.objects.all()
+    activities = Activity.objects.all()
+    
+    
+    return render(request,'Admin/CheckIn.html',{'activities':activities})
 
 
-def CAL(request):
-    #print(request.user.username)
-    test = ActivityAttendList.objects.all() 
-    AAA = test.filter(act=request.user.username)
-   # BBB = Activity.objects.filter(act_date=)
+@csrf_exempt
+def CheckInObjects(request,name):
+    attendList = ActivityAttendList.objects.all()
+    activities = Activity.objects.all()
+    clubmember = ClubMember.objects.all()
+
+    datetemp =  activities.filter(act_name=name)[0].act_date
+    print(datetemp)
+    passdata = attendList.filter(act_date=datetemp)
+
+
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        id = data["id"]
+        actname = data["name"]
+        # name = request.POST.get('name')
+        # id = request.POST.get('id')
+        temp1 = activities.filter(act_name=actname)
+        temp = attendList.filter(act_id=id,act_date=temp1.first().act_date)
+        print(temp)
+        if temp.first().flag == 0:
+            temp.update(flag=1)
+        else:
+            temp.update(flag=0)
     
-    
-    for i in test:
-        print(AAA)
-    
-    return render(request,'User/Club_Attend_List.html')
+    return render(request,'Admin/CheckInAction.html',{'activities':activities,'attendlist':passdata,'clubmember':clubmember,'name':name})
+
+def MemberManagement(request):
+    clubmembers = ClubMember.objects.all()
+    return render(request,'Admin/MemberManagement.html',{'clubmembers':clubmembers})

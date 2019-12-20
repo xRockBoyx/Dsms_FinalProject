@@ -104,7 +104,11 @@
             </div>
         </nav>
     </header>
-
+    {% if messages%}
+        {% for message in messages %}
+        <p {% if message.tags == "success" %} class="alert alert-success" {% elif message.tags == 'error'%} class="alert alert-danger" {% endif %}>{{message}}</p>
+        {% endfor %}
+    {% endif %}
     <main>
         <div class="form-signin text-center" style="margin-top: 100px">
             <img class="mb-4" src="https://bootstrap.hexschool.com/docs/4.2/assets/brand/bootstrap-solid.svg" alt=""

@@ -95,21 +95,21 @@
                         <form action="{% url 'activityEdit'%}" method="POST">
                             {% csrf_token %}
                             <h5> 編輯活動 </h5>
-                            <h6 id="act_name" style="margin-top: 30px;"> 當前名稱： 我們與資安的距離 </h6>
+                            <h6 id="act_name" style="margin-top: 30px;"> 請選擇活動 </h6>
                             <div class="form-group input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                                 </div>
                                 <input name="name" class="form-control" placeholder="活動名稱" type="text">
                             </div>
-                            <h6 id="act_location" style="margin-top: 30px;"> 當前地點： 逢甲大學 </h6>
+                            <h6 id="act_location" style="margin-top: 30px;"> </h6>
                             <div class="form-group input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"> <i class="fa fa-building"></i> </span>
                                 </div>
                                 <input name="location" class="form-control" placeholder="活動地點" type="text">
                             </div>
-                            <h6 id="act_date" style="margin-top: 30px;"> 當前日期： 2019-10-05 </h6>
+                            <h6 id="act_date" style="margin-top: 30px;"> </h6>
                             <div class="form-group input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
