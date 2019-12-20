@@ -15,10 +15,10 @@ import json
 current = '' 
 
 def Index(request):
-    superusers = User.objects.all()
+    #superusers = User.objects.all()
     #print(superusers)
-    for i in superusers:
-        print("user",i)
+    #for i in superusers:
+    #    print("user",i)
 
     #print(members)
    # for i in members:
@@ -36,6 +36,8 @@ def register(request):
             form.save()
             messages.success(request,"註冊成功！！！")
             return redirect('/')
+        else:
+            messages.error(request,"註冊失敗！！！")
         
     return render(request,'registration/register.html',{'form':form})
 
@@ -46,7 +48,6 @@ def activity(request):
         #print(activities)
         return render(request,'Admin/Activity.html',{'activities':activities})
     else:
-
         return render(request,'User/Activity.html')
 
 @login_required
@@ -165,4 +166,7 @@ def CheckInObjects(request,name):
             temp.update(flag=0)
     
     return render(request,'Admin/CheckInAction.html',{'activities':activities,'attendlist':passdata,'clubmember':clubmember,'name':name})
-# Create your views here.
+
+def MemberManagement(request):
+    clubmembers = ClubMember.objects.all()
+    return render(request,'Admin/MemberManagement.html',{'clubmembers':clubmembers})

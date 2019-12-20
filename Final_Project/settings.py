@@ -43,7 +43,7 @@ INSTALLED_APPS = [
    # 'django_extensions',
 
 ]
-
+#AUTH_USER_MODEL = 'Check_in_System.CustomUser'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

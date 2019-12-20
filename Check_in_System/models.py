@@ -6,6 +6,7 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 
 class Activity(models.Model):
@@ -66,6 +67,11 @@ class AuthPermission(models.Model):
         db_table = 'auth_permission'
         unique_together = (('content_type', 'codename'),)
 
+# class CustomUser(AbstractUser):
+#     phone = models.CharField(max_length=20, blank=True, null=True)
+#     deparement = models.CharField(max_length=50, blank=True, null=True)
+#     stu_id = models.CharField(max_length=10, blank=True, null=True)
+#     name = models.CharField(max_length=30,blank=True,null=True)
 
 class AuthUser(models.Model):
     password = models.CharField(max_length=128)
