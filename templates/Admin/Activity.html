@@ -80,7 +80,7 @@
                                     <a style='color:red' class="btn activitie" onclick="del('{{i.act_name}}')">delete</a>
                                     <a style='color:blue' class="btn activitie" onclick="show('{{i.act_name}}')">edit</a>
                                 </div>
-                                <span class="d-block">{{i.act_date}}</span>
+                                <span class="d-block">{{i.act_date|date:"Y-m-d"}}</span>
                             </div>
                         </div>
                         {% endfor %}

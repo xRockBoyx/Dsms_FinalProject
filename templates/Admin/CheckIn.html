@@ -66,7 +66,7 @@
                                     <strong class="text-gray-dark">{{i.act_name}}</strong>
                                     <a class="btn" href="/checkin/{{i.act_name}}")>edit</a>
                                 </div>
-                                <span class="d-block">{{i.act_date}}</span>
+                                <span class="d-block">{{i.act_date|date:"Y-m-d"}}</span>
                             </div>
                         </div>
                         {% endfor %}  

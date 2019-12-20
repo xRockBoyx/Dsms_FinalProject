@@ -174,11 +174,16 @@ def MemberManagement(request):
 def CAL (request):
     # AAA = ActivityAttendList.objects.all()
     attendList = ActivityAttendList.objects.all()
-    id = request.user.username
-    for i in attendList:
-        if (i.act_id == id):
-            print(i.act_id)
-    a = attendList.filter(act_id=id)
-    print(a)
-    # ActivityAttendList.objects.filter
-    return render(request, 'User/club_Attend_list.html')
+    activity = Activity.objects.all()
+    attend_user = attendList.filter(act_id=request.user.username)
+    attend_name = []
+    attend_date = []
+    for i in attend_user:
+        attend_name.append(activity.filter(act_date=i.act_date.act_date)[0].act_name)
+        attend_date.append(activity.filter(act_date=i.act_date.act_date)[0].act_date)
+    
+    attend_list = zip(attend_name, attend_date)
+    attend_list = {
+        'attend_list': attend_list,
+    }
+    return render(request, 'User/Activity.html', attend_list)
