@@ -10,5 +10,7 @@ urlpatterns = [
     path('activity/show/<name>/',views.activityShow,name="activityShow"),
     path('activity/edit/',views.activityEdit,name="activityEdit"),
     path('activity/delete/<name>/',views.activityDelete,name="activityDelete"),
-    path('addactivity/',views.AddActivity,name="AddActivity")
+    path('addactivity/',views.AddActivity,name="AddActivity"),
+    path('CAL/',views.CAL,name="Club_Attend_List")
+
 ]

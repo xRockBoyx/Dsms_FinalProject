@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from .models import ClubMember,AuthUser,Activity
+from .models import ClubMember,AuthUser,Activity,ActivityAttendList
 from .forms import *
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
@@ -130,3 +130,16 @@ def AddActivity(request):
             messages.error(request,'新增失敗！')
     return render(request,'Admin/AddActivity.html',{'form':form})
 # Create your views here.
+
+
+def CAL(request):
+    #print(request.user.username)
+    test = ActivityAttendList.objects.all() 
+    AAA = test.filter(act=request.user.username)
+   # BBB = Activity.objects.filter(act_date=)
+    
+    
+    for i in test:
+        print(AAA)
+    
+    return render(request,'User/Club_Attend_List.html')
