@@ -13,5 +13,6 @@ urlpatterns = [
     path('addactivity/',views.AddActivity,name="AddActivity"),
     path('checkin/<name>/',views.CheckInObjects,name = "CheckInObjects"),
     path('checkin/',views.CheckIn,name = "CheckIn"),
-    path('MemberManagement/',views.MemberManagement,name="MemberManagement")
+    path('MemberManagement/',views.MemberManagement,name="MemberManagement"),
+    path('CAL/',views.CAL,name = "CAL")
 ]

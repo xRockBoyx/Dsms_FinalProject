@@ -170,3 +170,15 @@ def CheckInObjects(request,name):
 def MemberManagement(request):
     clubmembers = ClubMember.objects.all()
     return render(request,'Admin/MemberManagement.html',{'clubmembers':clubmembers})
+
+def CAL (request):
+    # AAA = ActivityAttendList.objects.all()
+    attendList = ActivityAttendList.objects.all()
+    id = request.user.username
+    for i in attendList:
+        if (i.act_id == id):
+            print(i.act_id)
+    a = attendList.filter(act_id=id)
+    print(a)
+    # ActivityAttendList.objects.filter
+    return render(request, 'User/club_Attend_list.html')
