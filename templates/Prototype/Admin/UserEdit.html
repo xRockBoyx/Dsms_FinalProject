@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="tw">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>社團活動簽到系統</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#"> 社團管理 </a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07"
+                    aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarsExample07">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">Disabled</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown07">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <button class="btn btn-outline-success my-2 my-sm-0">登入</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+
+            <div class="d-flex align-items-center p-3 my-3 text-50 bg-purple rounded shadow-sm">
+                <svg class="col-1 mr-3" width="48" height="48" height="401pt" viewBox="0 -1 401.52289 401"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="m370.589844 250.972656c-5.523438 0-10 4.476563-10 10v88.789063c-.019532 16.5625-13.4375 29.984375-30 30h-280.589844c-16.5625-.015625-29.980469-13.4375-30-30v-260.589844c.019531-16.558594 13.4375-29.980469 30-30h88.789062c5.523438 0 10-4.476563 10-10 0-5.519531-4.476562-10-10-10h-88.789062c-27.601562.03125-49.96875 22.398437-50 50v260.59375c.03125 27.601563 22.398438 49.96875 50 50h280.589844c27.601562-.03125 49.96875-22.398437 50-50v-88.792969c0-5.523437-4.476563-10-10-10zm0 0" />
+                    <path
+                        d="m376.628906 13.441406c-17.574218-17.574218-46.066406-17.574218-63.640625 0l-178.40625 178.40625c-1.222656 1.222656-2.105469 2.738282-2.566406 4.402344l-23.460937 84.699219c-.964844 3.472656.015624 7.191406 2.5625 9.742187 2.550781 2.546875 6.269531 3.527344 9.742187 2.566406l84.699219-23.464843c1.664062-.460938 3.179687-1.34375 4.402344-2.566407l178.402343-178.410156c17.546875-17.585937 17.546875-46.054687 0-63.640625zm-220.257812 184.90625 146.011718-146.015625 47.089844 47.089844-146.015625 146.015625zm-9.40625 18.875 37.621094 37.625-52.039063 14.417969zm227.257812-142.546875-10.605468 10.605469-47.09375-47.09375 10.609374-10.605469c9.761719-9.761719 25.589844-9.761719 35.351563 0l11.738281 11.734375c9.746094 9.773438 9.746094 25.589844 0 35.359375zm0 0" />
+                </svg>
+                <div class="col-2 lh-100">
+                    <h6 class="mb-0 lh-100"> 使用者管理頁面 </h6>
+                    <small> 管理員身份 </small>
+                </div>
+                <div class="col-5"></div>
+                <div class="col-4">
+                    <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+                        <button type="button" class="btn btn-secondary">新增使用者</button>
+                        <button type="button" class="btn btn-secondary">編輯使用者</button>
+                        <button type="button" class="btn btn-secondary">刪除使用者</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-5">
+                    <div class="my-3 p-3 bg-white rounded shadow-sm">
+                        <h5>社員資料</h5>
+
+                        <div class="input-group input-group-sm mb-3" style="margin-top: 20px;">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">搜尋</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-sm" placeholder="輸入學號或姓名">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Go</button>
+                            </div>
+                        </div>
+
+                        <div class="media text-muted pt-3">
+                            <svg height="32" width="32" class="bd-placeholder-img mr-2 rounded"
+                                enable-background="new 0 0 482.239 482.239" viewBox="0 0 482.239 482.239" width="512"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="m465.016 0h-447.793c-9.52 0-17.223 7.703-17.223 17.223v447.793c0 9.52 7.703 17.223 17.223 17.223h447.793c9.52 0 17.223-7.703 17.223-17.223v-447.793c0-9.52-7.703-17.223-17.223-17.223zm-17.223 447.793h-413.347v-413.347h413.348v413.347z" />
+                                <path
+                                    d="m373.856 184.405-24.354-24.354-142.828 142.828-73.937-73.937-24.354 24.354 98.291 98.291z" />
+                            </svg>
+                            <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                                <div class="d-flex justify-content-between align-items-center w-100">
+                                    <strong class="text-gray-dark">巫逸哲</strong>
+                                    <a href="#">edit</a>
+                                </div>
+                                <span class="d-block">D0618990</span>
+                            </div>
+                        </div>
+
+                        <div class="media text-muted pt-3">
+                            <svg height="32" width="32" class="bd-placeholder-img mr-2 rounded"
+                                enable-background="new 0 0 482.239 482.239" viewBox="0 0 482.239 482.239" width="512"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="m465.016 0h-447.793c-9.52 0-17.223 7.703-17.223 17.223v447.793c0 9.52 7.703 17.223 17.223 17.223h447.793c9.52 0 17.223-7.703 17.223-17.223v-447.793c0-9.52-7.703-17.223-17.223-17.223zm-17.223 447.793h-413.347v-413.347h413.348v413.347z" />
+                                <path
+                                    d="m373.856 184.405-24.354-24.354-142.828 142.828-73.937-73.937-24.354 24.354 98.291 98.291z" />
+                            </svg>
+                            <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                                <div class="d-flex justify-content-between align-items-center w-100">
+                                    <strong class="text-gray-dark">巫逸哲</strong>
+                                    <a href="#">edit</a>
+                                </div>
+                                <span class="d-block">D0618990</span>
+                            </div>
+                        </div>
+
+                        <div class="media text-muted pt-3">
+                            <svg height="32" width="32" class="bd-placeholder-img mr-2 rounded"
+                                enable-background="new 0 0 482.239 482.239" viewBox="0 0 482.239 482.239" width="512"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="m465.016 0h-447.793c-9.52 0-17.223 7.703-17.223 17.223v447.793c0 9.52 7.703 17.223 17.223 17.223h447.793c9.52 0 17.223-7.703 17.223-17.223v-447.793c0-9.52-7.703-17.223-17.223-17.223zm-17.223 447.793h-413.347v-413.347h413.348v413.347z" />
+                                <path
+                                    d="m373.856 184.405-24.354-24.354-142.828 142.828-73.937-73.937-24.354 24.354 98.291 98.291z" />
+                            </svg>
+                            <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                                <div class="d-flex justify-content-between align-items-center w-100">
+                                    <strong class="text-gray-dark">巫逸哲</strong>
+                                    <a href="#">edit</a>
+                                </div>
+                                <span class="d-block">D0618990</span>
+                            </div>
+                        </div>
+
+                        <div class="media text-muted pt-3">
+                            <svg height="32" width="32" class="bd-placeholder-img mr-2 rounded"
+                                enable-background="new 0 0 482.239 482.239" viewBox="0 0 482.239 482.239" width="512"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="m465.016 0h-447.793c-9.52 0-17.223 7.703-17.223 17.223v447.793c0 9.52 7.703 17.223 17.223 17.223h447.793c9.52 0 17.223-7.703 17.223-17.223v-447.793c0-9.52-7.703-17.223-17.223-17.223zm-17.223 447.793h-413.347v-413.347h413.348v413.347z" />
+                                <path
+                                    d="m373.856 184.405-24.354-24.354-142.828 142.828-73.937-73.937-24.354 24.354 98.291 98.291z" />
+                            </svg>
+                            <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                                <div class="d-flex justify-content-between align-items-center w-100">
+                                    <strong class="text-gray-dark">巫逸哲</strong>
+                                    <a href="#">edit</a>
+                                </div>
+                                <span class="d-block">D0618990</span>
+                            </div>
+                        </div>
+
+                        <div class="media text-muted pt-3">
+                            <svg height="32" width="32" class="bd-placeholder-img mr-2 rounded"
+                                enable-background="new 0 0 482.239 482.239" viewBox="0 0 482.239 482.239" width="512"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="m465.016 0h-447.793c-9.52 0-17.223 7.703-17.223 17.223v447.793c0 9.52 7.703 17.223 17.223 17.223h447.793c9.52 0 17.223-7.703 17.223-17.223v-447.793c0-9.52-7.703-17.223-17.223-17.223zm-17.223 447.793h-413.347v-413.347h413.348v413.347z" />
+                                <path
+                                    d="m373.856 184.405-24.354-24.354-142.828 142.828-73.937-73.937-24.354 24.354 98.291 98.291z" />
+                            </svg>
+                            <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                                <div class="d-flex justify-content-between align-items-center w-100">
+                                    <strong class="text-gray-dark">巫逸哲</strong>
+                                    <a href="#">edit</a>
+                                </div>
+                                <span class="d-block">D0618990</span>
+                            </div>
+                        </div>
+
+
+                        <div class="media text-muted pt-3">
+                            <svg height="32" width="32" class="bd-placeholder-img mr-2 rounded"
+                                enable-background="new 0 0 482.239 482.239" viewBox="0 0 482.239 482.239" width="512"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="m465.016 0h-447.793c-9.52 0-17.223 7.703-17.223 17.223v447.793c0 9.52 7.703 17.223 17.223 17.223h447.793c9.52 0 17.223-7.703 17.223-17.223v-447.793c0-9.52-7.703-17.223-17.223-17.223zm-17.223 447.793h-413.347v-413.347h413.348v413.347z" />
+                                <path
+                                    d="m373.856 184.405-24.354-24.354-142.828 142.828-73.937-73.937-24.354 24.354 98.291 98.291z" />
+                            </svg>
+                            <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                                <div class="d-flex justify-content-between align-items-center w-100">
+                                    <strong class="text-gray-dark">巫逸哲</strong>
+                                    <a href="#">edit</a>
+                                </div>
+                                <span class="d-block">D0618990</span>
+                            </div>
+                        </div>
+
+                        <div class="media text-muted pt-3">
+                            <svg height="32" width="32" class="bd-placeholder-img mr-2 rounded"
+                                enable-background="new 0 0 482.239 482.239" viewBox="0 0 482.239 482.239" width="512"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="m465.016 0h-447.793c-9.52 0-17.223 7.703-17.223 17.223v447.793c0 9.52 7.703 17.223 17.223 17.223h447.793c9.52 0 17.223-7.703 17.223-17.223v-447.793c0-9.52-7.703-17.223-17.223-17.223zm-17.223 447.793h-413.347v-413.347h413.348v413.347z" />
+                                <path
+                                    d="m373.856 184.405-24.354-24.354-142.828 142.828-73.937-73.937-24.354 24.354 98.291 98.291z" />
+                            </svg>
+                            <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                                <div class="d-flex justify-content-between align-items-center w-100">
+                                    <strong class="text-gray-dark">巫逸哲</strong>
+                                    <a href="#">edit</a>
+                                </div>
+                                <span class="d-block">D0618990</span>
+                            </div>
+                        </div>
+
+                        <div class="media text-muted pt-3">
+                            <svg height="32" width="32" class="bd-placeholder-img mr-2 rounded"
+                                enable-background="new 0 0 482.239 482.239" viewBox="0 0 482.239 482.239" width="512"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="m465.016 0h-447.793c-9.52 0-17.223 7.703-17.223 17.223v447.793c0 9.52 7.703 17.223 17.223 17.223h447.793c9.52 0 17.223-7.703 17.223-17.223v-447.793c0-9.52-7.703-17.223-17.223-17.223zm-17.223 447.793h-413.347v-413.347h413.348v413.347z" />
+                                <path
+                                    d="m373.856 184.405-24.354-24.354-142.828 142.828-73.937-73.937-24.354 24.354 98.291 98.291z" />
+                            </svg>
+                            <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                                <div class="d-flex justify-content-between align-items-center w-100">
+                                    <strong class="text-gray-dark">巫逸哲</strong>
+                                    <a href="#">edit</a>
+                                </div>
+                                <span class="d-block">D0618990</span>
+                            </div>
+                        </div>
+
+                        <small class="d-block text-right mt-3">
+                            <a href="#"> 檢視所有社員 </a>
+                        </small>
+                    </div>
+
+
+                </div>
+                <div class="col-7">
+                    <!------ Include the above in your HEAD tag ---------->
+                    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+                    <div class="my-3 p-3 bg-white rounded shadow-sm">
+                        <form>
+                            <h5> 社員管理 </h5>
+                            <h6 style="margin-top: 20px;"> 目前名稱： 巫逸哲 </h6>
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                </div>
+                                <input name="" class="form-control" placeholder="姓名" type="text">
+                            </div>
+                            <h6 style="margin-top: 20px;"> 目前科系： IECS </h6>
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+                                </div>
+                                <select class="form-control">
+                                    <option selected=""> IECS </option>
+                                    <option> RCE </option>
+                                    <option> DCL </option>
+                                    <option> DEE </option>
+                                </select>
+                            </div>
+
+                            <h6 style="margin-top: 20px;"> 目前 Email： yitsewu1998@gmail.com </h6>
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                                </div>
+                                <input name="" class="form-control" placeholder="Email address" type="email">
+                            </div>
+
+                            <h6 style="margin-top: 20px;"> 目前手機：0919-932-012 </h6>
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                                </div>
+                                <select class="custom-select" style="max-width: 120px;">
+                                    <option selected="">+886</option>
+                                </select>
+                                <input name="" class="form-control" placeholder="Phone number" type="text">
+                            </div>
+                            <h6 style="margin-top: 55px;"> 修改密碼： </h6>
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                </div>
+                                <input class="form-control" placeholder="Create password" type="password">
+                            </div>
+                            <h6 style="margin-top: 20px;"> 請再輸入一次： </h6>
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                </div>
+                                <input class="form-control" placeholder="Repeat password" type="password">
+                            </div>
+
+                            <div class="row" style="margin-top: 60px;">
+                                <div class="col-6 form-group">
+                                    <button class="btn btn-lg btn-danger btn-block" type="submit"> 取消修改 </button>
+                                </div>
+                                <div class="col-0"></div>
+                                <div class="col-6 form-group">
+                                    <button class="btn btn-lg btn-success btn-block" type="submit"> 確認修改 </button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </main>
+
+    <footer class="page-footer">
+        <nav class="navbar navbar-default fixed-bottom" role="navigation">
+            <div class="container justify-content-center">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="footer-copyright text-center">
+                            © 2018 Copyright: ?
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </footer>
+</body>
+
+</html>
