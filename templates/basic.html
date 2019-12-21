@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="tw">
-
-
-
 {% block style %}
 
 {% endblock %}
+
 <head>
 
     <meta charset="UTF-8">
@@ -14,7 +12,8 @@
     <title>社團活動簽到系統</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    {% comment %} <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> {% endcomment %}
+    {% comment %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> {% endcomment %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
@@ -23,9 +22,10 @@
 {% block Ajax%}
 
 {% endblock %}
+
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
             <div class="container">
                 <a class="navbar-brand" href="/"> 社團管理 </a>
 
@@ -38,7 +38,8 @@
                     <ul class="navbar-nav mr-auto">
                         {% if user.is_superuser %}
                         <li class="nav-item ">
-                            <a class="nav-link" href="{% url 'CheckIn' %}">簽到頁面 <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{% url 'CheckIn' %}">簽到頁面 <span
+                                    class="sr-only">(current)</span></a>
                         </li>
                         {% endif %}
                         {% if user.is_authenticated %}
@@ -52,40 +53,42 @@
                         </li>
                         {% if user.is_superuser %}
                         <li class="nav-item ">
-                            <a class="nav-link" href="{% url 'MemberManagement' %}">社員管理 <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{% url 'MemberManagement' %}">社員管理 <span
+                                    class="sr-only">(current)</span></a>
                         </li>
                         {% endif %}
                     </ul>
                     {% if not user.is_authenticated %}
-                        <a class="my-sm-0" href="{% url 'login' %}">登入</a>
+                    <a class="my-sm-0" href="{% url 'login' %}">登入</a>
                     {% else %}
-                        <a class="my-sm-0" href="{% url 'logout' %}?next=/">登出</a>
+                    <a class="my-sm-0" href="{% url 'logout' %}?next=/">登出</a>
                     {% endif %}
                 </div>
             </div>
         </nav>
     </header>
+
     {% block content %}
-    
+
     {% endblock %}
-    <main>
-
-    </main>
-
 
     <footer class="page-footer">
-        <nav class="navbar navbar-default fixed-bottom" role="navigation">
+        <nav class="navbar navbar-default fixed-bottom" role="navigation" style="background-color: #343a40; color: white;">
             <div class="container justify-content-center">
                 <div class="row">
                     <div class="col-12">
                         <div class="footer-copyright text-center">
-                            © 2018 Copyright: ?
+                            &emsp;© 2019 Copyright：原 想不到組名QQ 開發團隊&emsp;|
+                            <a style="color: white;font-weight: normal;" href="#">&emsp; 關於我們 &emsp; </a> | 
+                            <a style="color: white;font-weight: normal;" href="#">&emsp; 聯絡我們 &emsp; </a> | 
+                            &emsp; <img src="https://i.imgur.com/gfx0vSk.png" style="height:17px"> 台灣 &emsp;
                         </div>
                     </div>
                 </div>
             </div>
         </nav>
     </footer>
+
 </body>
 
 </html>
