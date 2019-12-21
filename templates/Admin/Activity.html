@@ -34,6 +34,7 @@
         
     </script>
 {% endblock %}
+
 <body> 
     {% block content%}
     <main>
@@ -65,7 +66,7 @@
                         <h5> 所有活動 </h5>
                         {% for  i in  activities %}
                         <div class="media text-muted pt-3">
-                            <svg height="32" width="32" class="bd-placeholder-img mr-2 rounded"
+                            <svg height="75" width="40" class="bd-placeholder-img mr-2 rounded"
                                 enable-background="new 0 0 482.239 482.239" viewBox="0 0 482.239 482.239" width="512"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -73,14 +74,28 @@
                                 <path
                                     d="m373.856 184.405-24.354-24.354-142.828 142.828-73.937-73.937-24.354 24.354 98.291 98.291z" />
                             </svg>
+                            &nbsp;&nbsp;
                             <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
                                 <div class="d-flex justify-content-between align-items-center w-100">
-                                    <strong class="text-gray-dark">{{i.act_name}}</strong>
-                                    
-                                    <a style='color:red' class="btn activitie" onclick="del('{{i.act_name}}')">delete</a>
-                                    <a style='color:blue' class="btn activitie" onclick="show('{{i.act_name}}')">edit</a>
+                                    <strong class="text-gray-dark" style="font-size: large;">{{i.act_name}}</strong>
+                                    <a class="btn activitie" onclick="show('{{i.act_name}}')">
+                                        edit &nbsp;&nbsp;
+                                    </a>
                                 </div>
-                                <span class="d-block">{{i.act_date|date:"Y-m-d"}}</span>
+                                <span class="d-block">
+                                    {{i.act_date|date:"Y-m-d"}}
+
+                                    <!-- Aligned -->
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <!-- Aligned -->
+
+                                    <a style='color:red' class="btn activitie" onclick="del('{{i.act_name}}')">
+                                        delete
+                                    </a>
+                                </span>
                             </div>
                         </div>
                         {% endfor %}
@@ -121,7 +136,6 @@
                                 <div class="col-6 form-group">
                                     {% comment %} <a href="{% url 'activityDelete'%}"><button class="btn btn-lg btn-danger btn-block" type="button"> 刪除活動 </button></a> {% endcomment %}
                                 </div> 
-                                <div class="col-0"></div>
                                 <div class="col-6 form-group">
                                     <button onclick="edit()" class="btn btn-lg btn-success btn-block"> 確認修改 </button>
                                 </div>
