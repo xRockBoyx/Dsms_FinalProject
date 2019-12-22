@@ -29,3 +29,8 @@
 - [o] [新增簽到紀錄](./Admin/CheckIn.html)
 - [o] [編輯簽到紀錄](./Admin/CheckIn.html)
 - [o] [刪除簽到紀錄](./Admin/CheckIn.html)
+
+### Try
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery=True %}
