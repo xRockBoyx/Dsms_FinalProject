@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
    # 'django_extensions',
-
 ]
 #AUTH_USER_MODEL = 'Check_in_System.CustomUser'
 MIDDLEWARE = [

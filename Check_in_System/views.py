@@ -15,6 +15,8 @@ import json
 current = '' 
 
 def Index(request):
+    obj = AuthUser.objects.filter(username='D0683214')
+    print(obj[0].first_name)
     #superusers = User.objects.all()
     #print(superusers)
     #for i in superusers:
@@ -34,6 +36,8 @@ def register(request):
         #    print(form)
         #    newUser = form.save(commit=False)
             form.save()
+            print(form.cleaned_data["deparement"],form.cleaned_data["name"],form.cleaned_data['phone'])
+            AuthUser.objects.filter(username = form.cleaned_data["username"]).update(first_name=form.cleaned_data["name"],deparement=form.cleaned_data["deparement"],phone=form.cleaned_data['phone'])
             messages.success(request,"註冊成功！！！")
             return redirect('/')
         else:

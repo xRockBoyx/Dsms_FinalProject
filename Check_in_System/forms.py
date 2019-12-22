@@ -17,7 +17,7 @@ class RegisterForm(UserCreationForm):
     deparement = forms.CharField(
         max_length=20,
         widget=forms.Select(
-            choices=[('1','IECS'),('2','RCE'),('3','DCL'),('4','DEE')],
+            choices=[('IECS','IECS'),('RCE','RCE'),('DCL','DCL'),('DEE','DEE')],
             attrs={
                 'class':'form-control'
             }
