@@ -28,6 +28,13 @@
                 // document.getElementById("member_password_2").innerText = "請再輸入一次密碼： ";
             })
     };
+    function del(username){ 
+        var url = '/MemberManagement/delete/' + username;
+        axios.get(url)
+        .then(function (response) {
+            location.reload()  
+        })
+    };
 </script>
 {% endblock %}
 
@@ -50,6 +57,7 @@
                     <small> 管理員身份 </small>
                 </div>
                 <div class="col-5"></div>
+                {% comment %}
                 <div class="col-4">
                     <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
                         <button type="button" class="btn btn-secondary">新增使用者</button>
@@ -57,13 +65,14 @@
                         <button type="button" class="btn btn-secondary">刪除使用者</button>
                     </div>
                 </div>
+                {% endcomment %}
             </div>
 
             <div class="row">
                 <div class="col-5">
                     <div class="my-3 p-3 bg-white rounded shadow-sm">
                         <h5>社員資料</h5>
-
+                        {% comment %}
                         <div class="input-group input-group-sm mb-3" style="margin-top: 20px;">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-sm">搜尋</span>
@@ -74,6 +83,7 @@
                                 <button class="btn btn-outline-secondary" type="button" id="button-addon2">Go</button>
                             </div>
                         </div>
+                        {% endcomment %}
                         {% for clubmember in clubmembers %}
                         <div class="media text-muted pt-3">
                             <svg height="32" width="32" class="bd-placeholder-img mr-2 rounded"
@@ -91,13 +101,20 @@
                                         edit &nbsp;&nbsp;
                                     </a>
                                 </div>
-                                <span class="d-block">{{clubmember.username}}</span>
+                                <span class="d-block">{{clubmember.username}}
+                                    <a style='color:red' class="btn activitie" onclick="del('{{clubmember.username}}')">
+                                        delete
+                                    </a>
+                                </span>
+                                
                             </div>
                         </div>
                         {% endfor %}
+                        {% comment %}
                         <small class="d-block text-right mt-3">
                             <a href="#"> 檢視所有社員 </a>
                         </small>
+                        {% endcomment %}
                     </div>
 
 

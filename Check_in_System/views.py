@@ -220,6 +220,13 @@ def MemberEdit(request):
                                                             password=pwd)
         return redirect('/MemberManagement/')
 
+@login_required
+def MemberdDelete(request,username):
+    temp = AuthUser.objects.filter(username=username)
+    temp.delete()
+    return redirect('/MemberManagement/')
+
+
 def CAL (request):
     # AAA = ActivityAttendList.objects.all()
     attendList = ActivityAttendList.objects.all()
