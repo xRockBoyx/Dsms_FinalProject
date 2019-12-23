@@ -36,7 +36,7 @@ def register(request):
         #    print(form)
         #    newUser = form.save(commit=False)
             form.save()
-            print(form.cleaned_data["deparement"],form.cleaned_data["name"],form.cleaned_data['phone'])
+            # print(form.cleaned_data["deparement"],form.cleaned_data["name"],form.cleaned_data['phone'])
             AuthUser.objects.filter(username = form.cleaned_data["username"]).update(first_name=form.cleaned_data["name"],deparement=form.cleaned_data["deparement"],phone=form.cleaned_data['phone'])
             messages.success(request,"註冊成功！！！")
             return redirect('/')
@@ -127,10 +127,18 @@ def Changeinfo(request):
 @login_required
 def AddActivity(request):
     form = AddActivityForm(request.POST)
+    users = AuthUser.objects.all()
     if request.method == 'POST':
         if form.is_valid():
             name = form.cleaned_data.get('name')
             location = form.cleaned_data.get('location')
+            date = form.cleaned_data.get('date')
+            
+            Activity.objects.create(location=location,act_name=name,act_date=date)
+
+            for i in users:
+                print(i)
+                ActivityAttendList.objects.create(act_date=Activity.objects.get(act_date=date),act_id=i.username,flag=0)
             messages.success(request,'新增成功！')
         else:
             messages.error(request,'新增失敗！')
@@ -148,8 +156,8 @@ def CheckIn(request):
 def CheckInObjects(request,name):
     attendList = ActivityAttendList.objects.all()
     activities = Activity.objects.all()
-    clubmember = ClubMember.objects.all()
-
+    clubmember = AuthUser.objects.all()
+    print(clubmember[0].email)
     datetemp =  activities.filter(act_name=name)[0].act_date
     print(datetemp)
     passdata = attendList.filter(act_date=datetemp)
@@ -163,6 +171,7 @@ def CheckInObjects(request,name):
         # id = request.POST.get('id')
         temp1 = activities.filter(act_name=actname)
         temp = attendList.filter(act_id=id,act_date=temp1.first().act_date)
+        print(id,'jjjjj')
         print(temp)
         if temp.first().flag == 0:
             temp.update(flag=1)
@@ -172,7 +181,7 @@ def CheckInObjects(request,name):
     return render(request,'Admin/CheckInAction.html',{'activities':activities,'attendlist':passdata,'clubmember':clubmember,'name':name})
 
 def MemberManagement(request):
-    clubmembers = ClubMember.objects.all()
+    clubmembers = AuthUser.objects.all()
     return render(request,'Admin/MemberManagement.html',{'clubmembers':clubmembers})
 
 def CAL (request):
