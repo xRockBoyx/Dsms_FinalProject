@@ -207,7 +207,7 @@ def memberShow(request, name):
     return JsonResponse({'showdata':resp})
 
 @login_required
-def MemberEdit(request):
+def memberEdit(request):
     if request.method == 'POST':
         print(request.POST)
         # print(request.POST['name'])
@@ -219,6 +219,7 @@ def MemberEdit(request):
                                                             phone=request.POST['phone'],
                                                             password=pwd)
         return redirect('/MemberManagement/')
+
 
 def CAL (request):
     # AAA = ActivityAttendList.objects.all()
