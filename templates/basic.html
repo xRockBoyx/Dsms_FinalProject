@@ -60,6 +60,8 @@
                         {% endif %}
                     </ul>
                     {% if not user.is_authenticated %}
+                    <a class="my-sm-0" href="{% url 'register' %}">註冊</a>
+                    <font color="white">&nbsp&nbspOR&nbsp&nbsp</font>
                     <a class="my-sm-0" href="{% url 'login' %}">登入</a>
                     {% else %}
                     <a class="my-sm-0" href="{% url 'logout' %}?next=/">登出</a>
