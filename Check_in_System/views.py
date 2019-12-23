@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import ClubMember,AuthUser,Activity,ActivityAttendList
 from .forms import *
 from django.contrib import messages
+from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 #回傳Json格式資料使用
@@ -10,6 +11,7 @@ from django.http import JsonResponse
 #ajax跳過csrf驗證
 from django.views.decorators.csrf import csrf_exempt,csrf_protect
 import json
+from django.contrib.auth.hashers import make_password
 
 
 current = '' 
@@ -77,6 +79,7 @@ def activityShow(request,name):
 def activityEdit(request):
     if request.method == 'POST':
         print(request.POST['name'])
+        print(request.POST)
         print(current)
         print(Activity.objects.filter(act_name = current))
         Activity.objects.filter(act_name = current).update(act_name=request.POST['name'],location=request.POST['location'],act_date=request.POST['date'])
@@ -183,6 +186,39 @@ def CheckInObjects(request,name):
 def MemberManagement(request):
     clubmembers = AuthUser.objects.all()
     return render(request,'Admin/MemberManagement.html',{'clubmembers':clubmembers})
+
+@login_required
+def memberShow(request, name):
+    global current
+    current = name
+    print(current)
+    user = AuthUser.objects.all()
+    user_list = list(user)
+    for i in user_list:
+        if i.username == current:
+            resp = [
+                {
+                    'member_name':i.first_name,
+                    'member_department':i.deparement,
+                    'member_email':i.email,
+                    'member_phone':i.phone,
+                }
+            ]    
+    return JsonResponse({'showdata':resp})
+
+@login_required
+def MemberEdit(request):
+    if request.method == 'POST':
+        print(request.POST)
+        # print(request.POST['name'])
+        print("sss")
+        pwd = make_password(password=request.POST['pwd'], salt = None, hasher ='default')
+        AuthUser.objects.filter(username = current).update(first_name=request.POST['name'], 
+                                                            deparement=request.POST['department'], 
+                                                            email=request.POST['email'],
+                                                            phone=request.POST['phone'],
+                                                            password=pwd)
+        return redirect('/MemberManagement/')
 
 def CAL (request):
     # AAA = ActivityAttendList.objects.all()
