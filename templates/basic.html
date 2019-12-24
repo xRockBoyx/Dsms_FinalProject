@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="tw">
+{% load static %}
 {% block style %}
 
 {% endblock %}
@@ -64,6 +65,7 @@
                     <font color="white">&nbsp&nbspOR&nbsp&nbsp</font>
                     <a class="my-sm-0" href="{% url 'login' %}">登入</a>
                     {% else %}
+                    <font color="white">您好！ {{user.username}}&nbsp&nbsp</font>
                     <a class="my-sm-0" href="{% url 'logout' %}?next=/">登出</a>
                     {% endif %}
                 </div>
@@ -84,7 +86,7 @@
                             &emsp;© 2019 Copyright：原 想不到組名QQ 開發團隊&emsp;|
                             <a style="color: white;font-weight: normal;" href="#">&emsp; 關於我們 &emsp; </a> | 
                             <a style="color: white;font-weight: normal;" href="#">&emsp; 聯絡我們 &emsp; </a> | 
-                            &emsp; <img src="https://i.imgur.com/gfx0vSk.png" style="height:17px"> 台灣 &emsp;
+                            &emsp; <img src="{% static "Taiwan.png" %}" style="height:17px"> 台灣 &emsp;
                         </div>
                     </div>
                 </div>

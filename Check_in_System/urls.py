@@ -15,7 +15,7 @@ urlpatterns = [
     path('checkin/',views.CheckIn,name = "CheckIn"),
     path('MemberManagement/',views.MemberManagement,name="MemberManagement"),
     path('MemberManagement/show/<name>/',views.memberShow,name="memberShow"),
-    path('MemberManagement/edit',views.MemberEdit,name="MemberEdit"),
+    path('MemberManagement/edit',views.memberEdit,name="MemberEdit"),
     path('MemberManagement/delete/<username>/',views.MemberdDelete,name="MemberdDelete"),
     path('CAL/',views.CAL, name = "CAL")
 ]
