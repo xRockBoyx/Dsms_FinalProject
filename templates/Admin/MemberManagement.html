@@ -21,9 +21,19 @@
                 let member_password_str_2 = receive.showdata[0].member_password_2;
 
                 document.getElementById("member_name").innerHTML = "目前名稱： " + member_name_str + " ";
+                document.getElementById("name_input").setAttribute('value',member_name_str);
                 document.getElementById("member_department").innerText = "目前科系： " + member_department_str + " ";
+                mySelect = document.getElementById("deparement_input");
+                for(var i, j = 0; i = mySelect.options[j]; j++) {
+                    if(i.value == member_department_str) {
+                        mySelect.selectedIndex = j;
+                        break;
+                    }
+                }
                 document.getElementById("member_email").innerText = "目前 Email： " + member_email_str + " ";
+                document.getElementById("email_input").defaultValue = member_email_str;
                 document.getElementById("member_phone").innerText = "目前手機： " + member_phone_str + " ";
+                document.getElementById("phone_input").setAttribute('value',member_phone_str);
                 document.getElementById("member_password").innerText = "修改密碼： ";
                 // document.getElementById("member_password_2").innerText = "請再輸入一次密碼： ";
             })
@@ -131,14 +141,14 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                                 </div>
-                                <input name="name" class="form-control" placeholder="姓名" type="text">
+                                <input id="name_input" name="name" class="form-control" placeholder="姓名" type="text">
                             </div>
                             <h6 id="member_department" style="margin-top: 20px;"> </h6>
                             <div class="form-group input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"> <i class="fa fa-building"></i> </span>
                                 </div>
-                                <select name="department" class="form-control">
+                                <select id="deparement_input" name="department" class="form-control">
                                     <option value="IECS" selected=""> IECS </option>
                                     <option vaule="RCE"> RCE </option>
                                     <option value="DCL"> DCL </option>
@@ -150,7 +160,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                                 </div>
-                                <input name="email" class="form-control" placeholder="Email address" type="email">
+                                <input id="email_input" name="email" class="form-control" placeholder="Email address" type="email">
                             </div>
 
                             <h6 id="member_phone" style="margin-top: 20px;"></h6>
@@ -161,7 +171,7 @@
                                 <select class="custom-select" style="max-width: 120px;">
                                     <option selected="">+886</option>
                                 </select>
-                                <input name="phone" class="form-control" placeholder="Phone number" type="text">
+                                <input id="phone_input" name="phone" class="form-control" placeholder="Phone number" type="text">
                             </div>
                             <h6 id="member_password" style="margin-top: 55px;"></h6>
                             <div class="form-group input-group">
@@ -179,7 +189,7 @@
                             </div> -->
                             <div class="row" style="margin-top: 60px;">
                                 <div class="col-6 form-group">
-                                    <button class="btn btn-lg btn-danger btn-block" type="submit"> 取消修改 </button>
+                                    <button class="btn btn-lg btn-danger btn-block" type="clear"> 取消修改 </button>
                                 </div>
                                 <div class="col-0"></div>
                                 <div class="col-6 form-group">

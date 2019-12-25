@@ -19,9 +19,11 @@
                 current_act = act_name_str;
 
                 document.getElementById("act_name").innerHTML = "當前活動： "+act_name_str+" ";
+                document.getElementById("name_input").setAttribute('value',act_name_str);
                 document.getElementById("act_location").innerText = " 當前地點： "+act_location_str+" ";
+                document.getElementById("location_input").setAttribute('value',act_location_str);
                 document.getElementById("act_date").innerText = " 當前日期： "+act_date_str+" ";
-                
+                document.getElementById("date_input").setAttribute('value',act_date_str);
             })
         };
         function del(name){ 
@@ -117,21 +119,21 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                                 </div>
-                                <input name="name" class="form-control" placeholder="活動名稱" type="text">
+                                <input id="name_input" name="name" class="form-control" placeholder="活動名稱" type="text">
                             </div>
                             <h6 id="act_location" style="margin-top: 30px;"> </h6>
                             <div class="form-group input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"> <i class="fa fa-building"></i> </span>
                                 </div>
-                                <input name="location" class="form-control" placeholder="活動地點" type="text">
+                                <input id="location_input" name="location" class="form-control" placeholder="活動地點" type="text">
                             </div>
                             <h6 id="act_date" style="margin-top: 30px;"> </h6>
                             <div class="form-group input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                 </div>
-                                <input name="date" class="form-control" placeholder="活動日期" type="text">
+                                <input id="date_input" name="date" class="form-control" placeholder="活動日期" type="text">
                             </div>
 
                             <div class="row" style="margin-top: 50px;">
@@ -153,20 +155,6 @@
 
     </main>
     {% endblock %}
-
-    {% comment %} <footer class="page-footer">
-        <nav class="navbar navbar-default fixed-bottom" role="navigation">
-            <div class="container justify-content-center">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="footer-copyright text-center">
-                            © 2018 Copyright: ?
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </footer> {% endcomment %}
 </body>
 
 </html>
