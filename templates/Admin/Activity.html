@@ -26,12 +26,20 @@
                 document.getElementById("date_input").setAttribute('value',act_date_str);
             })
         };
+
+
         function del(name){ 
-            var url = '/activity/delete/' + name;
-            axios.get(url)
-            .then(function (response) {
-                location.reload()  
-            })
+            if (confirm("是否刪除"+name)){
+                alert(此活動已刪除);
+                var url = '/activity/delete/' + name;
+                axios.get(url)
+                .then(function (response) {
+                    location.reload()  
+                })
+            } else {
+                alert("已取消刪除操作");
+            }
+
         };
         
     </script>

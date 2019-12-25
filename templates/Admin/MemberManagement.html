@@ -39,11 +39,17 @@
             })
     };
     function del(username){ 
-        var url = '/MemberManagement/delete/' + username;
-        axios.get(url)
-        .then(function (response) {
-            location.reload()  
-        })
+        if(confirm("是否刪除"+username)){
+            alert("刪除成功");
+            var url = '/MemberManagement/delete/' + username;
+            axios.get(url)
+            .then(function (response) {
+                location.reload()  
+            })
+        }
+        else {
+            alert("已取消刪除操作");
+        }
     };
 </script>
 {% endblock %}
