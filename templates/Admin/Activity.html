@@ -30,12 +30,13 @@
 
         function del(name){ 
             if (confirm("是否刪除"+name)){
-                alert(此活動已刪除);
+                
                 var url = '/activity/delete/' + name;
                 axios.get(url)
                 .then(function (response) {
                     location.reload()  
                 })
+               alert("此活動已刪除");
             } else {
                 alert("已取消刪除操作");
             }

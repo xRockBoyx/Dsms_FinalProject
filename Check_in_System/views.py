@@ -17,8 +17,8 @@ from django.contrib.auth.hashers import make_password
 current = '' 
 
 def Index(request):
-    obj = AuthUser.objects.filter(username='D0683214')
-    print(obj[0].first_name)
+    # obj = AuthUser.objects.filter(username='D0683214')
+    # print(obj[0].first_name)
     #superusers = User.objects.all()
     #print(superusers)
     #for i in superusers:
