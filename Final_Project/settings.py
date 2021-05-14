@@ -81,11 +81,11 @@ WSGI_APPLICATION = 'Final_Project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'demo',                       # Or path to database file if using sqlite3.
-        'USER': 'root',                       # Not used with sqlite3.
-        'PASSWORD': '12345678',               # Not used with sqlite3.
-        'HOST': '140.134.79.129',                           # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '52000', 
+        'NAME': '',                       # Or path to database file if using sqlite3.
+        'USER': '',                       # Not used with sqlite3.
+        'PASSWORD': '',               # Not used with sqlite3.
+        'HOST': '',                           # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '', 
     }
 }
 
